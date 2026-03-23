@@ -1,0 +1,25 @@
+{
+  "name": "compliance-assessment-tools",
+  "version": "1.0.0",
+  "description": "Interactive web-based compliance assessment tools bundle (21 tools)",
+  "type": "module",
+  "main": "index.html",
+  "scripts": {
+    "serve": "npx serve .",
+    "dev": "npx http-server . -p 8000 -o index.html"
+  },
+  "keywords": [
+    "compliance",
+    "assessment",
+    "ai",
+    "interactive",
+    "tools",
+    "wizard"
+  ],
+  "author": "Justice",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.0.0",
+    "http-server": "^14.0.0"
+  }
+}

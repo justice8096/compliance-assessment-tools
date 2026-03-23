@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Compliance Assessment Tools</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      color: white;
+      margin-bottom: 50px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.1em;
+      opacity: 0.95;
+    }
+
+    .search-box {
+      margin-bottom: 40px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .tool-card {
+      background: white;
+      border-radius: 8px;
+      padding: 25px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-left: 4px solid #667eea;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      border-left-color: #764ba2;
+    }
+
+    .tool-card h3 {
+      color: #333;
+      margin-bottom: 10px;
+      font-size: 1.2em;
+    }
+
+    .tool-card p {
+      color: #666;
+      font-size: 0.95em;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .tool-card a {
+      display: inline-block;
+      background: #667eea;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .tool-card a:hover {
+      background: #764ba2;
+    }
+
+    .category-tag {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #666;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      margin-bottom: 10px;
+    }
+
+    .stats {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .stats h2 {
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .stats p {
+      color: #666;
+      font-size: 1.1em;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛡️ AI Compliance Assessment Tools</h1>
+      <p class="subtitle">21 Interactive Tools for Comprehensive Compliance Evaluation</p>
+    </header>
+
+    <div class="search-box">
+      <input 
+        type="text" 
+        id="searchInput" 
+        placeholder="Search tools... (e.g., bias, transparency, consent)"
+        onkeyup="filterTools()"
+      >
+    </div>
+
+    <div class="tools-grid" id="toolsGrid">
+      <!-- Tools will be inserted here by JavaScript -->
+    </div>
+
+    <div class="stats">
+      <h2>Tool Coverage</h2>
+      <p id="toolCount">21 Interactive Assessment Tools</p>
+    </div>
+  </div>
+
+  <script>
+    const tools = [
+      {
+        name: "AI Literacy Training",
+        description: "Assess organizational knowledge and readiness for AI compliance. Evaluate training needs and competency gaps.",
+        category: "Training",
+        file: "ai-literacy-training.html"
+      },
+      {
+        name: "Automated Decision Logic",
+        description: "Evaluate automated decision systems for bias, transparency, and human oversight requirements.",
+        category: "Systems",
+        file: "automated-decision-logic.html"
+      },
+      {
+        name: "Bias Testing Framework",
+        description: "Structured testing for algorithmic bias across protected attributes and demographic groups.",
+        category: "Testing",
+        file: "bias-testing.html"
+      },
+      {
+        name: "Conformity Assessment",
+        description: "Complete conformity assessment for AI systems against regulatory requirements.",
+        category: "Compliance",
+        file: "conformity-assessment.html"
+      },
+      {
+        name: "Consent Design Wizard",
+        description: "Design consent flows that meet transparency and user autonomy requirements.",
+        category: "Privacy",
+        file: "consent-design.html"
+      },
+      {
+        name: "Consent Records Audit",
+        description: "Audit and validate consent documentation and record-keeping practices.",
+        category: "Audit",
+        file: "consent-records-audit.html"
+      },
+      {
+        name: "Content Labeling Strategy",
+        description: "Develop labeling strategies for AI-generated content and synthetic media.",
+        category: "Disclosure",
+        file: "content-labeling.html"
+      },
+      {
+        name: "Content Moderation Assessment",
+        description: "Evaluate content moderation systems for fairness, transparency, and appeal mechanisms.",
+        category: "Systems",
+        file: "content-moderation.html"
+      },
+      {
+        name: "Disclosure Toolkit",
+        description: "Create comprehensive disclosure materials for AI system users.",
+        category: "Disclosure",
+        file: "disclosure-toolkit.html"
+      },
+      {
+        name: "Data Subject Rights Implementation",
+        description: "Plan and implement data subject rights (access, deletion, portability, objection).",
+        category: "Privacy",
+        file: "dsr-rights-implementation.html"
+      },
+      {
+        name: "Governance Framework",
+        description: "Build AI governance structures with clear roles, responsibilities, and oversight mechanisms.",
+        category: "Governance",
+        file: "governance-framework.html"
+      },
+      {
+        name: "Human Oversight Design",
+        description: "Design human-in-the-loop systems with meaningful human oversight and intervention.",
+        category: "Systems",
+        file: "human-oversight.html"
+      },
+      {
+        name: "Impact & Risk Scoring",
+        description: "Assess AI system impact and risk across multiple dimensions.",
+        category: "Assessment",
+        file: "impact-risk-scoring.html"
+      },
+      {
+        name: "Incident Management",
+        description: "Plan incident response procedures for AI-related failures and harms.",
+        category: "Risk",
+        file: "incident-management.html"
+      },
+      {
+        name: "LLM Model Selector",
+        description: "Compare LLM models across compliance, capability, cost, and safety dimensions.",
+        category: "Tools",
+        file: "llm-selector.html"
+      },
+      {
+        name: "Privacy Impact Assessment",
+        description: "Comprehensive privacy impact assessment for AI data processing.",
+        category: "Privacy",
+        file: "pia-assessment.html"
+      },
+      {
+        name: "Risk Classification",
+        description: "Classify AI systems by regulatory risk tier and compliance requirements.",
+        category: "Assessment",
+        file: "risk-classification.html"
+      },
+      {
+        name: "Security Assessment",
+        description: "Evaluate AI system security posture, vulnerabilities, and protection measures.",
+        category: "Security",
+        file: "security-assessment.html"
+      },
+      {
+        name: "Supply Chain Risk Management",
+        description: "Identify and manage risks in AI supply chains, dependencies, and third-party components.",
+        category: "Risk",
+        file: "supply-chain-risk.html"
+      },
+      {
+        name: "Training Data Disclosure",
+        description: "Document and disclose training data sources, composition, and potential biases.",
+        category: "Disclosure",
+        file: "training-data-disclosure.html"
+      },
+      {
+        name: "Transparency Documentation",
+        description: "Create detailed transparency documentation for AI system functionality and limitations.",
+        category: "Disclosure",
+        file: "transparency-documentation.html"
+      }
+    ];
+
+    function renderTools(toolsToShow) {
+      const grid = document.getElementById('toolsGrid');
+      grid.innerHTML = '';
+
+      toolsToShow.forEach(tool => {
+        const card = document.createElement('div');
+        card.className = 'tool-card';
+        card.innerHTML = `
+          <span class="category-tag">${tool.category}</span>
+          <h3>${tool.name}</h3>
+          <p>${tool.description}</p>
+          <a href="${tool.file}" target="_blank">Open Tool →</a>
+        `;
+        grid.appendChild(card);
+      });
+
+      document.getElementById('toolCount').textContent = 
+        `${toolsToShow.length} of ${tools.length} tools shown`;
+    }
+
+    function filterTools() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      
+      if (!searchTerm) {
+        renderTools(tools);
+        return;
+      }
+
+      const filtered = tools.filter(tool => 
+        tool.name.toLowerCase().includes(searchTerm) ||
+        tool.description.toLowerCase().includes(searchTerm) ||
+        tool.category.toLowerCase().includes(searchTerm)
+      );
+
+      renderTools(filtered);
+    }
+
+    // Initial render
+    renderTools(tools);
+  </script>
+</body>
+</html>
