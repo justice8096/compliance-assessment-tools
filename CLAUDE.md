@@ -44,3 +44,29 @@ npx serve .
 - Design: navy #0B1426, amber #D4943A, teal #2A7B7B
 - Zero innerHTML — all DOM manipulation via createElement/textContent
 - Export to markdown and JSON config formats
+
+
+## LLM Compliance Integration
+This project is part of the LLM Compliance Evidence Collection pipeline from D:\LLMComplianceSkill.
+
+### Pipeline Position
+This project handles **Steps 2-3: Interactive Assessment** — 21 browser-based wizard tools for human-judgment compliance fields that cannot be auto-filled.
+
+### Tool-to-Template Mapping
+- risk-classification.html → Template 17: EU AI Act risk tier
+- pia-assessment.html → Template 07: Privacy Impact Assessment
+- bias-testing.html → Template 08: Bias/fairness testing
+- human-oversight.html → Template 09: Oversight model design
+- consent-design.html → Template 10: Consent mechanism design
+- transparency-documentation.html → Template 01: System transparency
+- disclosure-toolkit.html → Template 02: User-facing disclosures
+- governance-framework.html → Template 12: Governance structure
+- security-assessment.html → Template 15: Security assessment
+- conformity-assessment.html → Template 19: Conformity assessment
+- And 11 more specialized assessment tools
+
+### Related Projects
+- **ai-compliance-extractors** — Step 1: Auto-extracts evidence
+- **compliance-autofill** — Step 4: Fills templates from this data
+- **zero-dep-wizard** — The createWizard() framework these tools are built on
+- **ai-compliance-plugin** — Cowork plugin for the full pipeline
